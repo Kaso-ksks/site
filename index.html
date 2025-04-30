@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Código</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <img src="logo.gif" alt="CodeEditor Logo" class="logo">
+        <h2>Editor de Código</h2>
+
+        <div class="tab-bar">
+            <button class="tab-button" onclick="openTab('HTML')">HTML</button>
+            <button class="tab-button" onclick="openTab('CSS')">CSS</button>
+            <button class="tab-button" onclick="openTab('JavaScript')">JavaScript</button>
+            <button class="tab-button" onclick="openTab('Preview')" id="defaultOpen">Preview</button>
+        </div>
+
+        <div class="controls">
+            <button onclick="runCode()">Executar (Ctrl+Enter)</button>
+            <button onclick="clearOutput()">Limpar Saída</button>
+            <button onclick="saveCode()">Salvar Código</button>
+            <button onclick="exportCode()">Exportar HTML</button>
+            <button onclick="toggleTheme()">Alternar Tema</button>
+        </div>
+
+        <div class="main-content">
+            <div class="editor-section">
+                <div id="HTML" class="tab-content">
+                    <h3>Editor HTML</h3>
+                    <div class="editor-container">
+                        <div class="line-numbers" id="htmlLines">1</div>
+                        <div class="editor-wrapper">
+                            <textarea class="editor dark" id="htmlEditor" oninput="updateLineNumbers('htmlEditor', 'htmlLines'); highlightCode('htmlEditor', 'htmlHighlight')" onscroll="syncScroll('htmlEditor', 'htmlLines', 'htmlHighlight')">
+<div id="content">
+    <h1>Bem-vindo!</h1>
+    <p>Editor de código</p>
+</div>
+                            </textarea>
+                            <pre class="highlight" id="htmlHighlight"></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="CSS" class="tab-content">
+                    <h3>Editor CSS</h3>
+                    <div class="editor-container">
+                        <div class="line-numbers" id="cssLines">1</div>
+                        <div class="editor-wrapper">
+                            <textarea class="editor dark" id="cssEditor" oninput="updateLineNumbers('cssEditor', 'cssLines'); highlightCode('cssEditor', 'cssHighlight')" onscroll="syncScroll('cssEditor', 'cssLines', 'cssHighlight')">
+#content {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+h1 {
+    color: #bb86fc;
+}
+p {
+    font-size: 16px;
+}
+                            </textarea>
+                            <pre class="highlight" id="cssHighlight"></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="JavaScript" class="tab-content">
+                    <h3>Editor JavaScript</h3>
+                    <div class="editor-container">
+                        <div class="line-numbers" id="jsLines">1</div>
+                        <div class="editor-wrapper">
+                            <textarea class="editor dark" id="jsEditor" oninput="updateLineNumbers('jsEditor', 'jsLines'); highlightCode('jsEditor', 'jsHighlight')" onscroll="syncScroll('jsEditor', 'jsLines', 'jsHighlight')">
+document.getElementById("content").innerHTML += "<p>Gerado por JavaScript!</p>";
+console.log("Código executado com sucesso!");
+                            </textarea>
+                            <pre class="highlight" id="jsHighlight"></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="Preview" class="tab-content">
+                    <div class="preview-editor-section">
+                        <h3 id="previewEditorTitle">Editor</h3>
+                        <div class="editor-container" id="previewEditorContainer">
+                            <!-- O editor será preenchido dinamicamente -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-section">
+                <div id="output">Pré-visualização aparecerá aqui...</div>
+            </div>
+        </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
